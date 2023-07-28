@@ -1,9 +1,9 @@
 
 # step=$1
-PET_PATH=$1
-echo $step
+PET_PATH=/mnt/data/user/tc_agi/user/huangyuxiang/alpaca-lora
+# echo $step
 
-i=$2
+i=3
 
 names=(arc hellaswag truthfulqa mmlu)
 datas=(arc_* hellaswag truthfulqa_mc hendrycksTest-*)
@@ -27,7 +27,7 @@ pip install -e .
 pip install accelerate
 pip install bitsandbytes
 
-model_path=/data/checkpoints/ultrallama/llama-2-70b/step_${step}_hf
+model_path=/mnt/data/user/tc_agi/user/zhaoweilin/llama-7b-hf
 echo "use model" $model_path
 
 # if [ ! -d $model_path ];then
@@ -37,7 +37,7 @@ echo "use model" $model_path
 #fi
 
 
-result_path=$model_path
+result_path=/data/checkpoints/logs
 # mkdir -p ${result_path}
 echo "result will be saved in" $result_path
 

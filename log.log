@@ -1,0 +1,179 @@
+task hendrycksTest-*
+shot 5
+WARNING: A conda environment already exists at '/home/jeeves/.conda/envs/eval'
+Remove existing environment (y/[n])? 
+no change     /opt/conda/condabin/conda
+no change     /opt/conda/bin/conda
+no change     /opt/conda/bin/conda-env
+no change     /opt/conda/bin/activate
+no change     /opt/conda/bin/deactivate
+no change     /opt/conda/etc/profile.d/conda.sh
+no change     /opt/conda/etc/fish/conf.d/conda.fish
+no change     /opt/conda/shell/condabin/Conda.psm1
+no change     /opt/conda/shell/condabin/conda-hook.ps1
+no change     /opt/conda/lib/python3.10/site-packages/xontrib/conda.xsh
+no change     /opt/conda/etc/profile.d/conda.csh
+no change     /home/jeeves/.bashrc
+No action taken.
+Looking in indexes: https://mirror.in.zhihu.com/simple
+Requirement already satisfied: transformers==4.31.0 in /home/jeeves/.conda/envs/eval/lib/python3.9/site-packages (4.31.0)
+Requirement already satisfied: filelock in /home/jeeves/.conda/envs/eval/lib/python3.9/site-packages (from transformers==4.31.0) (3.12.2)
+Requirement already satisfied: huggingface-hub<1.0,>=0.14.1 in /home/jeeves/.conda/envs/eval/lib/python3.9/site-packages (from transformers==4.31.0) (0.16.4)
+Requirement already satisfied: numpy>=1.17 in /home/jeeves/.conda/envs/eval/lib/python3.9/site-packages (from transformers==4.31.0) (1.25.1)
+Requirement already satisfied: packaging>=20.0 in /home/jeeves/.conda/envs/eval/lib/python3.9/site-packages (from transformers==4.31.0) (23.1)
+Requirement already satisfied: pyyaml>=5.1 in /home/jeeves/.conda/envs/eval/lib/python3.9/site-packages (from transformers==4.31.0) (6.0.1)
+Requirement already satisfied: regex!=2019.12.17 in /home/jeeves/.conda/envs/eval/lib/python3.9/site-packages (from transformers==4.31.0) (2023.6.3)
+Requirement already satisfied: requests in /home/jeeves/.conda/envs/eval/lib/python3.9/site-packages (from transformers==4.31.0) (2.31.0)
+Requirement already satisfied: tokenizers!=0.11.3,<0.14,>=0.11.1 in /home/jeeves/.conda/envs/eval/lib/python3.9/site-packages (from transformers==4.31.0) (0.13.3)
+Requirement already satisfied: safetensors>=0.3.1 in /home/jeeves/.conda/envs/eval/lib/python3.9/site-packages (from transformers==4.31.0) (0.3.1)
+Requirement already satisfied: tqdm>=4.27 in /home/jeeves/.conda/envs/eval/lib/python3.9/site-packages (from transformers==4.31.0) (4.65.0)
+Requirement already satisfied: fsspec in /home/jeeves/.conda/envs/eval/lib/python3.9/site-packages (from huggingface-hub<1.0,>=0.14.1->transformers==4.31.0) (2023.6.0)
+Requirement already satisfied: typing-extensions>=3.7.4.3 in /home/jeeves/.conda/envs/eval/lib/python3.9/site-packages (from huggingface-hub<1.0,>=0.14.1->transformers==4.31.0) (4.7.1)
+Requirement already satisfied: charset-normalizer<4,>=2 in /home/jeeves/.conda/envs/eval/lib/python3.9/site-packages (from requests->transformers==4.31.0) (3.2.0)
+Requirement already satisfied: idna<4,>=2.5 in /home/jeeves/.conda/envs/eval/lib/python3.9/site-packages (from requests->transformers==4.31.0) (3.4)
+Requirement already satisfied: urllib3<3,>=1.21.1 in /home/jeeves/.conda/envs/eval/lib/python3.9/site-packages (from requests->transformers==4.31.0) (2.0.4)
+Requirement already satisfied: certifi>=2017.4.17 in /home/jeeves/.conda/envs/eval/lib/python3.9/site-packages (from requests->transformers==4.31.0) (2023.5.7)
+Looking in indexes: https://mirror.in.zhihu.com/simple
+Requirement already satisfied: sentencepiece in /home/jeeves/.conda/envs/eval/lib/python3.9/site-packages (0.1.99)
+Looking in indexes: https://mirror.in.zhihu.com/simple
+Requirement already satisfied: protobuf==3.20.0 in /home/jeeves/.conda/envs/eval/lib/python3.9/site-packages (3.20.0)
+Looking in indexes: https://mirror.in.zhihu.com/simple
+Requirement already satisfied: einops in /home/jeeves/.conda/envs/eval/lib/python3.9/site-packages (0.6.1)
+Looking in indexes: https://mirror.in.zhihu.com/simple
+Obtaining file:///home/jeeves/cpet-lm-eval
+  Preparing metadata (setup.py): started
+  Preparing metadata (setup.py): finished with status 'done'
+Requirement already satisfied: datasets>=2.0.0 in /home/jeeves/.conda/envs/eval/lib/python3.9/site-packages (from lm-eval==0.3.0) (2.13.1)
+Requirement already satisfied: jsonlines in /home/jeeves/.conda/envs/eval/lib/python3.9/site-packages (from lm-eval==0.3.0) (3.1.0)
+Requirement already satisfied: numexpr in /home/jeeves/.conda/envs/eval/lib/python3.9/site-packages (from lm-eval==0.3.0) (2.8.4)
+Requirement already satisfied: openai>=0.6.4 in /home/jeeves/.conda/envs/eval/lib/python3.9/site-packages (from lm-eval==0.3.0) (0.27.8)
+Requirement already satisfied: omegaconf>=2.2 in /home/jeeves/.conda/envs/eval/lib/python3.9/site-packages (from lm-eval==0.3.0) (2.3.0)
+Requirement already satisfied: peft>=0.2.0 in /home/jeeves/.conda/envs/eval/lib/python3.9/site-packages (from lm-eval==0.3.0) (0.4.0)
+Requirement already satisfied: pybind11>=2.6.2 in /home/jeeves/.conda/envs/eval/lib/python3.9/site-packages (from lm-eval==0.3.0) (2.11.1)
+Requirement already satisfied: pycountry in /home/jeeves/.conda/envs/eval/lib/python3.9/site-packages (from lm-eval==0.3.0) (22.3.5)
+Requirement already satisfied: pytablewriter in /home/jeeves/.conda/envs/eval/lib/python3.9/site-packages (from lm-eval==0.3.0) (1.0.0)
+Requirement already satisfied: rouge-score>=0.0.4 in /home/jeeves/.conda/envs/eval/lib/python3.9/site-packages (from lm-eval==0.3.0) (0.1.2)
+Requirement already satisfied: sacrebleu==1.5.0 in /home/jeeves/.conda/envs/eval/lib/python3.9/site-packages (from lm-eval==0.3.0) (1.5.0)
+Requirement already satisfied: scikit-learn>=0.24.1 in /home/jeeves/.conda/envs/eval/lib/python3.9/site-packages (from lm-eval==0.3.0) (1.3.0)
+Requirement already satisfied: sqlitedict in /home/jeeves/.conda/envs/eval/lib/python3.9/site-packages (from lm-eval==0.3.0) (2.1.0)
+Requirement already satisfied: torch>=1.7 in /home/jeeves/.conda/envs/eval/lib/python3.9/site-packages (from lm-eval==0.3.0) (2.0.1)
+Requirement already satisfied: tqdm-multiprocess in /home/jeeves/.conda/envs/eval/lib/python3.9/site-packages (from lm-eval==0.3.0) (0.0.11)
+Requirement already satisfied: transformers>=4.1 in /home/jeeves/.conda/envs/eval/lib/python3.9/site-packages (from lm-eval==0.3.0) (4.31.0)
+Requirement already satisfied: zstandard in /home/jeeves/.conda/envs/eval/lib/python3.9/site-packages (from lm-eval==0.3.0) (0.21.0)
+Requirement already satisfied: accelerate>=0.17.1 in /home/jeeves/.conda/envs/eval/lib/python3.9/site-packages (from lm-eval==0.3.0) (0.21.0)
+Requirement already satisfied: portalocker in /home/jeeves/.conda/envs/eval/lib/python3.9/site-packages (from sacrebleu==1.5.0->lm-eval==0.3.0) (2.7.0)
+Requirement already satisfied: numpy>=1.17 in /home/jeeves/.conda/envs/eval/lib/python3.9/site-packages (from accelerate>=0.17.1->lm-eval==0.3.0) (1.25.1)
+Requirement already satisfied: packaging>=20.0 in /home/jeeves/.conda/envs/eval/lib/python3.9/site-packages (from accelerate>=0.17.1->lm-eval==0.3.0) (23.1)
+Requirement already satisfied: psutil in /home/jeeves/.conda/envs/eval/lib/python3.9/site-packages (from accelerate>=0.17.1->lm-eval==0.3.0) (5.9.5)
+Requirement already satisfied: pyyaml in /home/jeeves/.conda/envs/eval/lib/python3.9/site-packages (from accelerate>=0.17.1->lm-eval==0.3.0) (6.0.1)
+Requirement already satisfied: pyarrow>=8.0.0 in /home/jeeves/.conda/envs/eval/lib/python3.9/site-packages (from datasets>=2.0.0->lm-eval==0.3.0) (12.0.1)
+Requirement already satisfied: dill<0.3.7,>=0.3.0 in /home/jeeves/.conda/envs/eval/lib/python3.9/site-packages (from datasets>=2.0.0->lm-eval==0.3.0) (0.3.6)
+Requirement already satisfied: pandas in /home/jeeves/.conda/envs/eval/lib/python3.9/site-packages (from datasets>=2.0.0->lm-eval==0.3.0) (2.0.3)
+Requirement already satisfied: requests>=2.19.0 in /home/jeeves/.conda/envs/eval/lib/python3.9/site-packages (from datasets>=2.0.0->lm-eval==0.3.0) (2.31.0)
+Requirement already satisfied: tqdm>=4.62.1 in /home/jeeves/.conda/envs/eval/lib/python3.9/site-packages (from datasets>=2.0.0->lm-eval==0.3.0) (4.65.0)
+Requirement already satisfied: xxhash in /home/jeeves/.conda/envs/eval/lib/python3.9/site-packages (from datasets>=2.0.0->lm-eval==0.3.0) (3.2.0)
+Requirement already satisfied: multiprocess in /home/jeeves/.conda/envs/eval/lib/python3.9/site-packages (from datasets>=2.0.0->lm-eval==0.3.0) (0.70.14)
+Requirement already satisfied: fsspec[http]>=2021.11.1 in /home/jeeves/.conda/envs/eval/lib/python3.9/site-packages (from datasets>=2.0.0->lm-eval==0.3.0) (2023.6.0)
+Requirement already satisfied: aiohttp in /home/jeeves/.conda/envs/eval/lib/python3.9/site-packages (from datasets>=2.0.0->lm-eval==0.3.0) (3.8.5)
+Requirement already satisfied: huggingface-hub<1.0.0,>=0.11.0 in /home/jeeves/.conda/envs/eval/lib/python3.9/site-packages (from datasets>=2.0.0->lm-eval==0.3.0) (0.16.4)
+Requirement already satisfied: antlr4-python3-runtime==4.9.* in /home/jeeves/.conda/envs/eval/lib/python3.9/site-packages (from omegaconf>=2.2->lm-eval==0.3.0) (4.9.3)
+Requirement already satisfied: safetensors in /home/jeeves/.conda/envs/eval/lib/python3.9/site-packages (from peft>=0.2.0->lm-eval==0.3.0) (0.3.1)
+Requirement already satisfied: absl-py in /home/jeeves/.conda/envs/eval/lib/python3.9/site-packages (from rouge-score>=0.0.4->lm-eval==0.3.0) (1.4.0)
+Requirement already satisfied: nltk in /home/jeeves/.conda/envs/eval/lib/python3.9/site-packages (from rouge-score>=0.0.4->lm-eval==0.3.0) (3.8.1)
+Requirement already satisfied: six>=1.14.0 in /home/jeeves/.conda/envs/eval/lib/python3.9/site-packages (from rouge-score>=0.0.4->lm-eval==0.3.0) (1.16.0)
+Requirement already satisfied: scipy>=1.5.0 in /home/jeeves/.conda/envs/eval/lib/python3.9/site-packages (from scikit-learn>=0.24.1->lm-eval==0.3.0) (1.11.1)
+Requirement already satisfied: joblib>=1.1.1 in /home/jeeves/.conda/envs/eval/lib/python3.9/site-packages (from scikit-learn>=0.24.1->lm-eval==0.3.0) (1.3.1)
+Requirement already satisfied: threadpoolctl>=2.0.0 in /home/jeeves/.conda/envs/eval/lib/python3.9/site-packages (from scikit-learn>=0.24.1->lm-eval==0.3.0) (3.2.0)
+Requirement already satisfied: filelock in /home/jeeves/.conda/envs/eval/lib/python3.9/site-packages (from torch>=1.7->lm-eval==0.3.0) (3.12.2)
+Requirement already satisfied: typing-extensions in /home/jeeves/.conda/envs/eval/lib/python3.9/site-packages (from torch>=1.7->lm-eval==0.3.0) (4.7.1)
+Requirement already satisfied: sympy in /home/jeeves/.conda/envs/eval/lib/python3.9/site-packages (from torch>=1.7->lm-eval==0.3.0) (1.12)
+Requirement already satisfied: networkx in /home/jeeves/.conda/envs/eval/lib/python3.9/site-packages (from torch>=1.7->lm-eval==0.3.0) (3.1)
+Requirement already satisfied: jinja2 in /home/jeeves/.conda/envs/eval/lib/python3.9/site-packages (from torch>=1.7->lm-eval==0.3.0) (3.1.2)
+Requirement already satisfied: nvidia-cuda-nvrtc-cu11==11.7.99 in /home/jeeves/.conda/envs/eval/lib/python3.9/site-packages (from torch>=1.7->lm-eval==0.3.0) (11.7.99)
+Requirement already satisfied: nvidia-cuda-runtime-cu11==11.7.99 in /home/jeeves/.conda/envs/eval/lib/python3.9/site-packages (from torch>=1.7->lm-eval==0.3.0) (11.7.99)
+Requirement already satisfied: nvidia-cuda-cupti-cu11==11.7.101 in /home/jeeves/.conda/envs/eval/lib/python3.9/site-packages (from torch>=1.7->lm-eval==0.3.0) (11.7.101)
+Requirement already satisfied: nvidia-cudnn-cu11==8.5.0.96 in /home/jeeves/.conda/envs/eval/lib/python3.9/site-packages (from torch>=1.7->lm-eval==0.3.0) (8.5.0.96)
+Requirement already satisfied: nvidia-cublas-cu11==11.10.3.66 in /home/jeeves/.conda/envs/eval/lib/python3.9/site-packages (from torch>=1.7->lm-eval==0.3.0) (11.10.3.66)
+Requirement already satisfied: nvidia-cufft-cu11==10.9.0.58 in /home/jeeves/.conda/envs/eval/lib/python3.9/site-packages (from torch>=1.7->lm-eval==0.3.0) (10.9.0.58)
+Requirement already satisfied: nvidia-curand-cu11==10.2.10.91 in /home/jeeves/.conda/envs/eval/lib/python3.9/site-packages (from torch>=1.7->lm-eval==0.3.0) (10.2.10.91)
+Requirement already satisfied: nvidia-cusolver-cu11==11.4.0.1 in /home/jeeves/.conda/envs/eval/lib/python3.9/site-packages (from torch>=1.7->lm-eval==0.3.0) (11.4.0.1)
+Requirement already satisfied: nvidia-cusparse-cu11==11.7.4.91 in /home/jeeves/.conda/envs/eval/lib/python3.9/site-packages (from torch>=1.7->lm-eval==0.3.0) (11.7.4.91)
+Requirement already satisfied: nvidia-nccl-cu11==2.14.3 in /home/jeeves/.conda/envs/eval/lib/python3.9/site-packages (from torch>=1.7->lm-eval==0.3.0) (2.14.3)
+Requirement already satisfied: nvidia-nvtx-cu11==11.7.91 in /home/jeeves/.conda/envs/eval/lib/python3.9/site-packages (from torch>=1.7->lm-eval==0.3.0) (11.7.91)
+Requirement already satisfied: triton==2.0.0 in /home/jeeves/.conda/envs/eval/lib/python3.9/site-packages (from torch>=1.7->lm-eval==0.3.0) (2.0.0)
+Requirement already satisfied: setuptools in /home/jeeves/.conda/envs/eval/lib/python3.9/site-packages (from nvidia-cublas-cu11==11.10.3.66->torch>=1.7->lm-eval==0.3.0) (68.0.0)
+Requirement already satisfied: wheel in /home/jeeves/.conda/envs/eval/lib/python3.9/site-packages (from nvidia-cublas-cu11==11.10.3.66->torch>=1.7->lm-eval==0.3.0) (0.38.4)
+Requirement already satisfied: cmake in /home/jeeves/.conda/envs/eval/lib/python3.9/site-packages (from triton==2.0.0->torch>=1.7->lm-eval==0.3.0) (3.27.0)
+Requirement already satisfied: lit in /home/jeeves/.conda/envs/eval/lib/python3.9/site-packages (from triton==2.0.0->torch>=1.7->lm-eval==0.3.0) (16.0.6)
+Requirement already satisfied: regex!=2019.12.17 in /home/jeeves/.conda/envs/eval/lib/python3.9/site-packages (from transformers>=4.1->lm-eval==0.3.0) (2023.6.3)
+Requirement already satisfied: tokenizers!=0.11.3,<0.14,>=0.11.1 in /home/jeeves/.conda/envs/eval/lib/python3.9/site-packages (from transformers>=4.1->lm-eval==0.3.0) (0.13.3)
+Requirement already satisfied: attrs>=19.2.0 in /home/jeeves/.conda/envs/eval/lib/python3.9/site-packages (from jsonlines->lm-eval==0.3.0) (23.1.0)
+Requirement already satisfied: DataProperty<2,>=0.55.0 in /home/jeeves/.conda/envs/eval/lib/python3.9/site-packages (from pytablewriter->lm-eval==0.3.0) (1.0.1)
+Requirement already satisfied: mbstrdecoder<2,>=1.0.0 in /home/jeeves/.conda/envs/eval/lib/python3.9/site-packages (from pytablewriter->lm-eval==0.3.0) (1.1.3)
+Requirement already satisfied: pathvalidate<4,>=2.3.0 in /home/jeeves/.conda/envs/eval/lib/python3.9/site-packages (from pytablewriter->lm-eval==0.3.0) (3.1.0)
+Requirement already satisfied: tabledata<2,>=1.3.1 in /home/jeeves/.conda/envs/eval/lib/python3.9/site-packages (from pytablewriter->lm-eval==0.3.0) (1.3.1)
+Requirement already satisfied: tcolorpy<1,>=0.0.5 in /home/jeeves/.conda/envs/eval/lib/python3.9/site-packages (from pytablewriter->lm-eval==0.3.0) (0.1.3)
+Requirement already satisfied: typepy[datetime]<2,>=1.2.0 in /home/jeeves/.conda/envs/eval/lib/python3.9/site-packages (from pytablewriter->lm-eval==0.3.0) (1.3.1)
+Requirement already satisfied: colorama in /home/jeeves/.conda/envs/eval/lib/python3.9/site-packages (from tqdm-multiprocess->lm-eval==0.3.0) (0.4.6)
+Requirement already satisfied: charset-normalizer<4.0,>=2.0 in /home/jeeves/.conda/envs/eval/lib/python3.9/site-packages (from aiohttp->datasets>=2.0.0->lm-eval==0.3.0) (3.2.0)
+Requirement already satisfied: multidict<7.0,>=4.5 in /home/jeeves/.conda/envs/eval/lib/python3.9/site-packages (from aiohttp->datasets>=2.0.0->lm-eval==0.3.0) (6.0.4)
+Requirement already satisfied: async-timeout<5.0,>=4.0.0a3 in /home/jeeves/.conda/envs/eval/lib/python3.9/site-packages (from aiohttp->datasets>=2.0.0->lm-eval==0.3.0) (4.0.2)
+Requirement already satisfied: yarl<2.0,>=1.0 in /home/jeeves/.conda/envs/eval/lib/python3.9/site-packages (from aiohttp->datasets>=2.0.0->lm-eval==0.3.0) (1.9.2)
+Requirement already satisfied: frozenlist>=1.1.1 in /home/jeeves/.conda/envs/eval/lib/python3.9/site-packages (from aiohttp->datasets>=2.0.0->lm-eval==0.3.0) (1.4.0)
+Requirement already satisfied: aiosignal>=1.1.2 in /home/jeeves/.conda/envs/eval/lib/python3.9/site-packages (from aiohttp->datasets>=2.0.0->lm-eval==0.3.0) (1.3.1)
+Requirement already satisfied: chardet<6,>=3.0.4 in /home/jeeves/.conda/envs/eval/lib/python3.9/site-packages (from mbstrdecoder<2,>=1.0.0->pytablewriter->lm-eval==0.3.0) (5.1.0)
+Requirement already satisfied: idna<4,>=2.5 in /home/jeeves/.conda/envs/eval/lib/python3.9/site-packages (from requests>=2.19.0->datasets>=2.0.0->lm-eval==0.3.0) (3.4)
+Requirement already satisfied: urllib3<3,>=1.21.1 in /home/jeeves/.conda/envs/eval/lib/python3.9/site-packages (from requests>=2.19.0->datasets>=2.0.0->lm-eval==0.3.0) (2.0.4)
+Requirement already satisfied: certifi>=2017.4.17 in /home/jeeves/.conda/envs/eval/lib/python3.9/site-packages (from requests>=2.19.0->datasets>=2.0.0->lm-eval==0.3.0) (2023.5.7)
+Requirement already satisfied: python-dateutil<3.0.0,>=2.8.0 in /home/jeeves/.conda/envs/eval/lib/python3.9/site-packages (from typepy[datetime]<2,>=1.2.0->pytablewriter->lm-eval==0.3.0) (2.8.2)
+Requirement already satisfied: pytz>=2018.9 in /home/jeeves/.conda/envs/eval/lib/python3.9/site-packages (from typepy[datetime]<2,>=1.2.0->pytablewriter->lm-eval==0.3.0) (2023.3)
+Requirement already satisfied: MarkupSafe>=2.0 in /home/jeeves/.conda/envs/eval/lib/python3.9/site-packages (from jinja2->torch>=1.7->lm-eval==0.3.0) (2.1.3)
+Requirement already satisfied: click in /home/jeeves/.conda/envs/eval/lib/python3.9/site-packages (from nltk->rouge-score>=0.0.4->lm-eval==0.3.0) (8.1.6)
+Requirement already satisfied: tzdata>=2022.1 in /home/jeeves/.conda/envs/eval/lib/python3.9/site-packages (from pandas->datasets>=2.0.0->lm-eval==0.3.0) (2023.3)
+Requirement already satisfied: mpmath>=0.19 in /home/jeeves/.conda/envs/eval/lib/python3.9/site-packages (from sympy->torch>=1.7->lm-eval==0.3.0) (0.19)
+Installing collected packages: lm-eval
+  Attempting uninstall: lm-eval
+    Found existing installation: lm-eval 0.3.0
+    Uninstalling lm-eval-0.3.0:
+      Successfully uninstalled lm-eval-0.3.0
+  Running setup.py develop for lm-eval
+Successfully installed lm-eval-0.3.0
+Looking in indexes: https://mirror.in.zhihu.com/simple
+Requirement already satisfied: accelerate in /home/jeeves/.conda/envs/eval/lib/python3.9/site-packages (0.21.0)
+Requirement already satisfied: numpy>=1.17 in /home/jeeves/.conda/envs/eval/lib/python3.9/site-packages (from accelerate) (1.25.1)
+Requirement already satisfied: packaging>=20.0 in /home/jeeves/.conda/envs/eval/lib/python3.9/site-packages (from accelerate) (23.1)
+Requirement already satisfied: psutil in /home/jeeves/.conda/envs/eval/lib/python3.9/site-packages (from accelerate) (5.9.5)
+Requirement already satisfied: pyyaml in /home/jeeves/.conda/envs/eval/lib/python3.9/site-packages (from accelerate) (6.0.1)
+Requirement already satisfied: torch>=1.10.0 in /home/jeeves/.conda/envs/eval/lib/python3.9/site-packages (from accelerate) (2.0.1)
+Requirement already satisfied: filelock in /home/jeeves/.conda/envs/eval/lib/python3.9/site-packages (from torch>=1.10.0->accelerate) (3.12.2)
+Requirement already satisfied: typing-extensions in /home/jeeves/.conda/envs/eval/lib/python3.9/site-packages (from torch>=1.10.0->accelerate) (4.7.1)
+Requirement already satisfied: sympy in /home/jeeves/.conda/envs/eval/lib/python3.9/site-packages (from torch>=1.10.0->accelerate) (1.12)
+Requirement already satisfied: networkx in /home/jeeves/.conda/envs/eval/lib/python3.9/site-packages (from torch>=1.10.0->accelerate) (3.1)
+Requirement already satisfied: jinja2 in /home/jeeves/.conda/envs/eval/lib/python3.9/site-packages (from torch>=1.10.0->accelerate) (3.1.2)
+Requirement already satisfied: nvidia-cuda-nvrtc-cu11==11.7.99 in /home/jeeves/.conda/envs/eval/lib/python3.9/site-packages (from torch>=1.10.0->accelerate) (11.7.99)
+Requirement already satisfied: nvidia-cuda-runtime-cu11==11.7.99 in /home/jeeves/.conda/envs/eval/lib/python3.9/site-packages (from torch>=1.10.0->accelerate) (11.7.99)
+Requirement already satisfied: nvidia-cuda-cupti-cu11==11.7.101 in /home/jeeves/.conda/envs/eval/lib/python3.9/site-packages (from torch>=1.10.0->accelerate) (11.7.101)
+Requirement already satisfied: nvidia-cudnn-cu11==8.5.0.96 in /home/jeeves/.conda/envs/eval/lib/python3.9/site-packages (from torch>=1.10.0->accelerate) (8.5.0.96)
+Requirement already satisfied: nvidia-cublas-cu11==11.10.3.66 in /home/jeeves/.conda/envs/eval/lib/python3.9/site-packages (from torch>=1.10.0->accelerate) (11.10.3.66)
+Requirement already satisfied: nvidia-cufft-cu11==10.9.0.58 in /home/jeeves/.conda/envs/eval/lib/python3.9/site-packages (from torch>=1.10.0->accelerate) (10.9.0.58)
+Requirement already satisfied: nvidia-curand-cu11==10.2.10.91 in /home/jeeves/.conda/envs/eval/lib/python3.9/site-packages (from torch>=1.10.0->accelerate) (10.2.10.91)
+Requirement already satisfied: nvidia-cusolver-cu11==11.4.0.1 in /home/jeeves/.conda/envs/eval/lib/python3.9/site-packages (from torch>=1.10.0->accelerate) (11.4.0.1)
+Requirement already satisfied: nvidia-cusparse-cu11==11.7.4.91 in /home/jeeves/.conda/envs/eval/lib/python3.9/site-packages (from torch>=1.10.0->accelerate) (11.7.4.91)
+Requirement already satisfied: nvidia-nccl-cu11==2.14.3 in /home/jeeves/.conda/envs/eval/lib/python3.9/site-packages (from torch>=1.10.0->accelerate) (2.14.3)
+Requirement already satisfied: nvidia-nvtx-cu11==11.7.91 in /home/jeeves/.conda/envs/eval/lib/python3.9/site-packages (from torch>=1.10.0->accelerate) (11.7.91)
+Requirement already satisfied: triton==2.0.0 in /home/jeeves/.conda/envs/eval/lib/python3.9/site-packages (from torch>=1.10.0->accelerate) (2.0.0)
+Requirement already satisfied: setuptools in /home/jeeves/.conda/envs/eval/lib/python3.9/site-packages (from nvidia-cublas-cu11==11.10.3.66->torch>=1.10.0->accelerate) (68.0.0)
+Requirement already satisfied: wheel in /home/jeeves/.conda/envs/eval/lib/python3.9/site-packages (from nvidia-cublas-cu11==11.10.3.66->torch>=1.10.0->accelerate) (0.38.4)
+Requirement already satisfied: cmake in /home/jeeves/.conda/envs/eval/lib/python3.9/site-packages (from triton==2.0.0->torch>=1.10.0->accelerate) (3.27.0)
+Requirement already satisfied: lit in /home/jeeves/.conda/envs/eval/lib/python3.9/site-packages (from triton==2.0.0->torch>=1.10.0->accelerate) (16.0.6)
+Requirement already satisfied: MarkupSafe>=2.0 in /home/jeeves/.conda/envs/eval/lib/python3.9/site-packages (from jinja2->torch>=1.10.0->accelerate) (2.1.3)
+Requirement already satisfied: mpmath>=0.19 in /home/jeeves/.conda/envs/eval/lib/python3.9/site-packages (from sympy->torch>=1.10.0->accelerate) (0.19)
+Looking in indexes: https://mirror.in.zhihu.com/simple
+Requirement already satisfied: bitsandbytes in /home/jeeves/.conda/envs/eval/lib/python3.9/site-packages (0.41.0)
+use model /mnt/data/user/tc_agi/user/zhaoweilin/llama-7b-hf
+result will be saved in .
+-------Task 3 final CMD is------
+python -u main.py --model hf-causal-experimental --model_args pretrained=/mnt/data/user/tc_agi/user/zhaoweilin/llama-7b-hf,dtype=float16,use_accelerate=True,peft=/mnt/data/user/tc_agi/user/huangyuxiang/alpaca-lora --num_fewshot 5 --tasks hendrycksTest-* --batch_size auto --output_path ./result_mmlu.json
+-------final CMD end------
+Selected Tasks: ['hendrycksTest-abstract_algebra', 'hendrycksTest-anatomy', 'hendrycksTest-astronomy', 'hendrycksTest-business_ethics', 'hendrycksTest-clinical_knowledge', 'hendrycksTest-college_biology', 'hendrycksTest-college_chemistry', 'hendrycksTest-college_computer_science', 'hendrycksTest-college_mathematics', 'hendrycksTest-college_medicine', 'hendrycksTest-college_physics', 'hendrycksTest-computer_security', 'hendrycksTest-conceptual_physics', 'hendrycksTest-econometrics', 'hendrycksTest-electrical_engineering', 'hendrycksTest-elementary_mathematics', 'hendrycksTest-formal_logic', 'hendrycksTest-global_facts', 'hendrycksTest-high_school_biology', 'hendrycksTest-high_school_chemistry', 'hendrycksTest-high_school_computer_science', 'hendrycksTest-high_school_european_history', 'hendrycksTest-high_school_geography', 'hendrycksTest-high_school_government_and_politics', 'hendrycksTest-high_school_macroeconomics', 'hendrycksTest-high_school_mathematics', 'hendrycksTest-high_school_microeconomics', 'hendrycksTest-high_school_physics', 'hendrycksTest-high_school_psychology', 'hendrycksTest-high_school_statistics', 'hendrycksTest-high_school_us_history', 'hendrycksTest-high_school_world_history', 'hendrycksTest-human_aging', 'hendrycksTest-human_sexuality', 'hendrycksTest-international_law', 'hendrycksTest-jurisprudence', 'hendrycksTest-logical_fallacies', 'hendrycksTest-machine_learning', 'hendrycksTest-management', 'hendrycksTest-marketing', 'hendrycksTest-medical_genetics', 'hendrycksTest-miscellaneous', 'hendrycksTest-moral_disputes', 'hendrycksTest-moral_scenarios', 'hendrycksTest-nutrition', 'hendrycksTest-philosophy', 'hendrycksTest-prehistory', 'hendrycksTest-professional_accounting', 'hendrycksTest-professional_law', 'hendrycksTest-professional_medicine', 'hendrycksTest-professional_psychology', 'hendrycksTest-public_relations', 'hendrycksTest-security_studies', 'hendrycksTest-sociology', 'hendrycksTest-us_foreign_policy', 'hendrycksTest-virology', 'hendrycksTest-world_religions']
+pretrained= /mnt/data/user/tc_agi/user/zhaoweilin/llama-7b-hf

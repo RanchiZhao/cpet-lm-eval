@@ -332,7 +332,8 @@ class HuggingFaceAutoLM(BaseLM):
         tokenizer: Optional[str] = None,
     ) -> transformers.PreTrainedTokenizer:
         """Returns a pre-trained tokenizer from a pre-trained tokenizer configuration."""
-        tokenizer = self.AUTO_TOKENIZER_CLASS.from_pretrained(
+        from transformers import LlamaTokenizer
+        tokenizer = LlamaTokenizer.from_pretrained(
             pretrained if tokenizer is None else tokenizer,
             revision=revision + ("/" + subfolder if subfolder is not None else ""),
         )
