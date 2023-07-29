@@ -7,4 +7,4 @@
 # python transform_to_hf_lora.py /data/checkpoints/models/
 # echo "finish transforming"
 
-cp adapter_config.json /data/checkpoints/models
+cp /mnt/data/user/tc_agi/user/huangyuxiang/alpaca-lora/adapter_config.json /data/checkpoints/models
