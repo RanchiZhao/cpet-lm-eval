@@ -43,12 +43,6 @@ def transform_to_hf(bmt_model, param_size):
 
         model_hf[f"{hf_pfx}.mlp.down_proj.weight"] = bmt_model[f"{bmt_pfx}.ffn.ffn.w_out.weight"].contiguous().float()
     return model_hf
-# print("transformed")
-
-# print("saved")
-# if not os.path.exists(outpath):
-#     os.makedirs(outpath)
-# torch.save(model_hf, os.path.join(outpath, "pytorch_model.pt"))
 
 
 if __name__ == "__main__":
