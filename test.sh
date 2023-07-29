@@ -2,7 +2,8 @@ SAVE_NAME=self_trained
 
 
 # step=$1
-PET_PATH=/mnt/data/user/tc_agi/user/huangyuxiang/alpaca-lora
+# PET_PATH=/mnt/data/user/tc_agi/user/huangyuxiang/alpaca-lora
+PET_PATH=/data/checkpoints/models
 # echo $step
 
 i=3
