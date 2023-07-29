@@ -44,7 +44,7 @@ echo "result will be saved in" $result_path
 
 # echo "device1" $device1
 # echo "device2" $device2
-CMD="python -u main.py --model hf-causal-experimental --model_args pretrained=${model_path},dtype="float16",use_accelerate=True,peft=${PET_PATH} --num_fewshot $shot --tasks $data --batch_size auto --output_path ${result_path}/result_${name}.json"
+CMD="python -u main.py --model hf-causal-experimental --model_args pretrained=${model_path},dtype="float16",use_accelerate=True --num_fewshot $shot --tasks $data --batch_size auto --output_path ${result_path}/result_${name}.json"
 echo "-------Task ${i} final CMD is------"
 echo "${CMD}"
 echo "-------final CMD end------"
