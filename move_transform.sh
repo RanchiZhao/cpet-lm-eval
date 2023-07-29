@@ -8,3 +8,5 @@
 # echo "finish transforming"
 
 cp /mnt/data/user/tc_agi/user/huangyuxiang/alpaca-lora/adapter_config.json /data/checkpoints/models
+
+cp /data/checkpoints/models/_hf/adapter_model.bin /data/checkpoints/models/adapter_model.bin 
