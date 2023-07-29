@@ -7,23 +7,21 @@ import os
 def transform_to_hf(bmt_model):
     model_hf = OrderedDict()
     layernum = 32
-    print(bmt_model.keys())
 
     for lnum in range(layernum):
         
         hf_pfx = f"base_model.model.model.layers.{lnum}.self_attn"
         bmt_pfx = f"encoder.layers.{lnum}.self_att.self_attention"
         
-        print(f"{bmt_model}.project_q.lora.lora_A")
-        model_hf[f"{hf_pfx}.q_proj.lora_A.weight"] = bmt_model[f"{bmt_model}.project_q.lora.lora_A"].contiguous().float()
-        model_hf[f"{hf_pfx}.k_proj.lora_A.weight"] = bmt_model[f"{bmt_model}.project_k.lora.lora_A"].contiguous().float()
-        model_hf[f"{hf_pfx}.v_proj.lora_A.weight"] = bmt_model[f"{bmt_model}.project_v.lora.lora_A"].contiguous().float()
-        model_hf[f"{hf_pfx}.o_proj.lora_A.weight"] = bmt_model[f"{bmt_model}.attention_out.lora.lora_A"].contiguous().float()
-        model_hf[f"{hf_pfx}.q_proj.lora_B.weight"] = bmt_model[f"{bmt_model}.project_q.lora.lora_B"].contiguous().float()
-        model_hf[f"{hf_pfx}.k_proj.lora_B.weight"] = bmt_model[f"{bmt_model}.project_k.lora.lora_B"].contiguous().float()
-        model_hf[f"{hf_pfx}.v_proj.lora_B.weight"] = bmt_model[f"{bmt_model}.project_v.lora.lora_B"].contiguous().float()
-        model_hf[f"{hf_pfx}.o_proj.lora_B.weight"] = bmt_model[f"{bmt_model}.attention_out.lora.lora_B"].contiguous().float()
-        
+        model_hf[f"{hf_pfx}.q_proj.lora_A.weight"] = bmt_model[f"{bmt_pfx}.project_q.lora.lora_A"].contiguous().float()
+        model_hf[f"{hf_pfx}.k_proj.lora_A.weight"] = bmt_model[f"{bmt_pfx}.project_k.lora.lora_A"].contiguous().float()
+        model_hf[f"{hf_pfx}.v_proj.lora_A.weight"] = bmt_model[f"{bmt_pfx}.project_v.lora.lora_A"].contiguous().float()
+        model_hf[f"{hf_pfx}.o_proj.lora_A.weight"] = bmt_model[f"{bmt_pfx}.attention_out.lora.lora_A"].contiguous().float()
+        model_hf[f"{hf_pfx}.q_proj.lora_B.weight"] = bmt_model[f"{bmt_pfx}.project_q.lora.lora_B"].contiguous().float()
+        model_hf[f"{hf_pfx}.k_proj.lora_B.weight"] = bmt_model[f"{bmt_pfx}.project_k.lora.lora_B"].contiguous().float()
+        model_hf[f"{hf_pfx}.v_proj.lora_B.weight"] = bmt_model[f"{bmt_pfx}.project_v.lora.lora_B"].contiguous().float()
+        model_hf[f"{hf_pfx}.o_proj.lora_B.weight"] = bmt_model[f"{bmt_pfx}.attention_out.lora.lora_B"].contiguous().float()
+    
     return model_hf
 
 
