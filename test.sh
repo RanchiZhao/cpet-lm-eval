@@ -18,6 +18,8 @@ shot=${shots[i]}
 echo "task" $data
 echo "shot" $shot
 
+conda deactivate
+conda remove -n eval
 conda create -n eval python=3.9
 conda init bash
 source /opt/conda/etc/profile.d/conda.sh
