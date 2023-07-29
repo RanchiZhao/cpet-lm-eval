@@ -6,4 +6,5 @@
 # echo "start transforming ..."
 # python transform_to_hf_lora.py /data/checkpoints/models/
 # echo "finish transforming"
-hdfs dfs -put /data/checkpoints/models/adapter_model.bin user/huangyuxiang/alpaca-lora
+
+cp adapter_config.json /data/checkpoints/models
