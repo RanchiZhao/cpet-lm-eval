@@ -83,7 +83,7 @@ def main():
     if is_mmlu(results):
         accs = []
         for k in results["results"]:
-            accs.append(results["results"][k]["acc"])
+            accs.append(results["results"][k]["acc_norm"])
         print("mmlu acc_norm unweighted average:", np.mean(accs))
         results["results"]["unweighted_average_acc_norm"] = np.mean(accs)
     else:
