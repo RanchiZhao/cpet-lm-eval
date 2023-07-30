@@ -32,8 +32,9 @@ pip install -e .
 pip install accelerate
 pip install bitsandbytes
 
-# model_path=/mnt/data/user/tc_agi/user/zhaoweilin/llama-7b-hf
-model_path=/mnt/data/user/tc_agi/ws/hf-13B
+
+model_path=/mnt/data/user/tc_agi/user/zhaoweilin/llama-7b-hf
+# model_path=/mnt/data/user/tc_agi/ws/hf-13B
 echo "use model" $model_path
 
 # if [ ! -d $model_path ];then
@@ -43,7 +44,7 @@ echo "use model" $model_path
 #fi
 
 
-result_path=/data/checkpoints/logs
+result_path=.
 # mkdir -p ${result_path}
 echo "result will be saved in" $result_path
 

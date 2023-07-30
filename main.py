@@ -3,6 +3,7 @@ import json
 import logging
 import os
 import numpy as np
+import bmtrain as bmt
 
 from lm_eval import tasks, evaluator, utils
 
@@ -37,6 +38,7 @@ def parse_args():
 
 def main():
     args = parse_args()
+    bmt.init_distributed(seed = 1234)
 
     assert not args.provide_description  # not implemented
 
