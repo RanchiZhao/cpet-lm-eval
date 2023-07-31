@@ -238,8 +238,8 @@ class ModelCenterBase(BaseLM):
         bmt.synchronize()
         
         # pet & recover =========================================
-        if pet == 'True': # add lora
-            if recover == 'True': # add recover
+        if pet: # add lora
+            if recover: # add recover
                 delta_model = LoraModel(
                     backbone_model=model,
                     modified_modules=['project_q', 'project_v', 'project_k', 'attention_out'],
@@ -271,7 +271,7 @@ class ModelCenterBase(BaseLM):
                 if bmt.rank() == 0:
                     delta_model.log()
         else: # without lora
-            if recover == 'True': # add recover
+            if recover: # add recover
                 delta_model = LoraModel(
                     backbone_model=model,
                     modified_modules=['project_q', 'project_k', 'project_v', 'attention_out', 'w_in.w', 'w_out'],
