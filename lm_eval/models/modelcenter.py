@@ -283,6 +283,7 @@ class ModelCenterBase(BaseLM):
                 set_model_otherparam(model, False)
                 
         # load cpet params: there should ONLY be cpet params in ckpt withoud backbone params
+        print("<<< loading cpet ckpt >>>")
         bmt.load(model, cpet_path, strict=False)
         bmt.synchronize()
         return model
