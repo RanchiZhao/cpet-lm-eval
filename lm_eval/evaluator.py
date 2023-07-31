@@ -77,15 +77,15 @@ def simple_evaluate(
         assert isinstance(model, lm_eval.base.LM)
         lm = model
 
-    if not no_cache:
-        lm = lm_eval.base.CachingLM(
-            lm,
-            "lm_cache/"
-            + (model if isinstance(model, str) else model.model.config._name_or_path)
-            + "_"
-            + model_args.replace("=", "-").replace(",", "_").replace("/", "-")
-            + ".db",
-        )
+    # if not no_cache:
+    #     lm = lm_eval.base.CachingLM(
+    #         lm,
+    #         "lm_cache/"
+    #         + (model if isinstance(model, str) else model.model.config._name_or_path)
+    #         + "_"
+    #         + model_args.replace("=", "-").replace(",", "_").replace("/", "-")
+    #         + ".db",
+    #     )
 
     task_dict = lm_eval.tasks.get_task_dict(tasks)
 
