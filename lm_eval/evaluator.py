@@ -19,7 +19,7 @@ def simple_evaluate(
     batch_size=None,
     max_batch_size=None,
     device=None,
-    no_cache=False,
+    no_cache=True, # changed
     limit=None,
     bootstrap_iters=100000,
     description_dict=None,

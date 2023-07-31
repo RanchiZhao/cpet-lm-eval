@@ -63,7 +63,7 @@ quant_config_path=/mnt/data/user/tc_agi/user/huangyuxiang/compress_configs/quant
 pr_config_path=/mnt/data/user/tc_agi/user/huangyuxiang/compress_configs/prune.json,pr_ckpt_path=/mnt/data/user/tc_agi/user/huangyuxiang/llama-compress/llama-7b-prune-4000,\
 spr_config_path=/mnt/data/user/tc_agi/user/huangyuxiang/compress_configs/sprune.json,spr_ckpt_path=/mnt/data/user/tc_agi/user/huangyuxiang/llama-compress/llama-7b-sprune-18000,\
 cpet_path=/data/checkpoints/results/Alpaca-pr-cpet/lora_9.pt,\
-use_accelerate=False --num_fewshot $shot --tasks $data --batch_size auto --no_cache True --output_path ${result_path}/result_${name}.json"
+use_accelerate=False --num_fewshot $shot --tasks $data --batch_size auto --output_path ${result_path}/result_${name}.json"
 echo "-------Task ${i} final CMD is------"
 echo "${CMD}"
 echo "-------final CMD end------"
