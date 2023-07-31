@@ -20,12 +20,12 @@ if __name__ == "__main__":
     
     out_path = os.path.join(os.path.dirname(in_path), "lora.pt")
     # os.makedirs(out_path, exist_ok=True)
-    if not os.path.exists(out_path):
-        print("transforming...")
-        hf_state_dict = transform_to_hf(torch.load(in_path))
-        print(hf_state_dict.keys())
-        print("done")
-        torch.save(hf_state_dict, out_path)
+    # if not os.path.exists(out_path):
+    print("transforming...")
+    hf_state_dict = transform_to_hf(torch.load(in_path))
+    print(hf_state_dict.keys())
+    print("done")
+    torch.save(hf_state_dict, out_path)
         
     print("saved")
     print(list(os.listdir(out_path)))
