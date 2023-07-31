@@ -24,7 +24,7 @@ import bmtrain as bmt
 from bmcook.quant import *
 from bmcook.pruning import *
 from bmcook.utils import config as bmcook_config
-from loras import LoraModel
+from .loras import LoraModel
 
 TokenSequence = Union[List[int], torch.LongTensor, torch.Tensor, BatchEncoding]
 
