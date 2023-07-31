@@ -19,7 +19,7 @@ if __name__ == "__main__":
     in_path = sys.argv[-1]
     
     out_path = os.path.join(os.path.dirname(in_path), "lora.pt")
-    os.makedirs(out_path, exist_ok=True)
+    # os.makedirs(out_path, exist_ok=True)
     if not os.path.exists(out_path):
         print("transforming...")
         hf_state_dict = transform_to_hf(torch.load(in_path))
