@@ -19,6 +19,13 @@ from model_center.generation.llama import LlamaBeamSearch
 from model_center.tokenizer import LlamaTokenizer
 from abc import abstractmethod
 
+import bmtrain as bmt
+
+from bmcook.quant import *
+from bmcook.pruning import *
+from bmcook.utils import config as bmcook_config
+from loras import LoraModel
+
 TokenSequence = Union[List[int], torch.LongTensor, torch.Tensor, BatchEncoding]
 
 _DeviceMapping = NewType("DeviceMapping", Mapping[str, Union[int, str, torch.device]])
@@ -62,6 +69,20 @@ def _get_dtype(
         _torch_dtype = dtype
     return _torch_dtype
 
+def set_UD(model, state: bool):
+    for n, p in model.named_parameters():
+        if 'lora_a1' in n or 'lora_a2' in n:
+            p.requires_grad = state
+
+def set_LoRA(model, state: bool):
+    for n, p in model.named_parameters():
+        if 'lora_A' in n or 'lora_B' in n:
+            p.requires_grad = state
+
+def set_model_otherparam(model, state: bool):
+    for n, p in model.named_parameters():
+        if 'lora' not in n:
+            p.requires_grad = state
 
 class ModelCenterBase(BaseLM):
     _DEFAULT_MAX_LENGTH: int = 2048
@@ -91,6 +112,18 @@ class ModelCenterBase(BaseLM):
         gptq_use_triton: Optional[bool] = False,
         bnb_4bit_quant_type: Optional[str] = None,
         bnb_4bit_compute_dtype: Optional[Union[str, torch.dtype]] = None,
+        # control params
+        comp_type: str = "nop",
+        pet: bool = False,
+        recover: bool = False,
+        # cpet path params
+        quant_config_path: str = "",
+        quant_ckpt_path: str = "",
+        pr_config_path: str = "",
+        pr_ckpt_path: str = "",
+        spr_config_path: str = "",
+        spr_ckpt_path: str = "",
+        cpet_path: str = "",
     ):
         super().__init__()
         
@@ -107,7 +140,7 @@ class ModelCenterBase(BaseLM):
         self._config = LlamaConfig.from_pretrained(pretrained)
         
         self._add_special_tokens = add_special_tokens
-        self.tokenizer = self._create_auto_tokenizer( # TODO
+        self.tokenizer = self._create_auto_tokenizer( 
             pretrained=pretrained,
             revision=revision,
             subfolder=subfolder,
@@ -123,8 +156,23 @@ class ModelCenterBase(BaseLM):
                 max_cpu_memory,
                 offload_folder,
             )
-            
-        self.model = self._get_modelcenter_model(pretrained) # make it as an abstract method
+        
+        self.model = self._get_modelcenter_model(pretrained) 
+        
+        self.model = self._set_cpet(
+            model = self.model,
+            comp_type=comp_type,
+            pet=pet,
+            recover=recover,
+            quant_config_path=quant_config_path,
+            quant_ckpt_path=quant_ckpt_path,
+            pr_config_path=pr_config_path,
+            pr_ckpt_path=pr_ckpt_path,
+            spr_config_path=spr_config_path,
+            spr_ckpt_path=spr_ckpt_path,
+            cpet_path=cpet_path,
+        )
+        
         self.beam_search = LlamaBeamSearch(
             model=self.model,
             tokenizer=self.tokenizer,
@@ -147,6 +195,98 @@ class ModelCenterBase(BaseLM):
     @abstractmethod
     def _get_modelcenter_model(self, pretrained):
         pass
+    
+    def _set_cpet(
+        self,
+        model,
+        # control params
+        comp_type: str = "nop",
+        pet: bool = False,
+        recover: bool = False,
+        # cpet path params
+        quant_config_path: str = "",
+        quant_ckpt_path: str = "",
+        pr_config_path: str = "",
+        pr_ckpt_path: str = "",
+        spr_config_path: str = "",
+        spr_ckpt_path: str = "",
+        cpet_path: str = "",
+    ):
+        # get compressed model
+        if comp_type == 'quant':
+            state_dict = torch.load(quant_ckpt_path) 
+            for key in list(state_dict.keys()):
+                if '_quant' in key:
+                    prefix = key.replace('_quant', '').replace('_scale', '')
+                    state_dict[prefix] = torch.mul(state_dict[prefix + '_quant'], state_dict[prefix + '_scale'].reshape((state_dict[prefix + '_scale'].shape[0], 1)))
+                    state_dict.pop(prefix + '_quant')
+                    state_dict.pop(prefix + '_scale')
+            model.load_state_dict(state_dict=state_dict)
+            ckconfig = bmcook_config.ConfigParser(quant_config_path) 
+            BMQuant.quantize(model,ckconfig)
+        elif comp_type == 'pr':
+            pr = BMPrune()
+            bmt.load(model, pr_ckpt_path) 
+            ckconfig = bmcook_config.ConfigParser(pr_config_path)
+            pr.compute_mask(model, ckconfig)  
+        elif comp_type == 'spr':
+            pr = BMPrune()
+            bmt.load(model, spr_ckpt_path)
+            ckconfig = bmcook_config.ConfigParser(spr_config_path)
+            pr.compute_mask(model, ckconfig) 
+        
+        bmt.synchronize()
+        
+        # pet & recover =========================================
+        if pet == 'True': # add lora
+            if recover == 'True': # add recover
+                delta_model = LoraModel(
+                    backbone_model=model,
+                    modified_modules=['project_q', 'project_v', 'project_k', 'attention_out'],
+                    lora_r=16,
+                    backend='bmt',
+                    lora_type='full',
+                )
+                delta2_model = LoraModel(
+                    backbone_model=model,
+                    modified_modules=['w_in.w', 'w_out'],
+                    lora_r = 16, # TODO
+                    lora_dropout=0.05,
+                    backend='bmt',
+                    lora_type='activate',
+                )
+                set_model_otherparam(model, False)
+                if bmt.rank() == 0:
+                    delta2_model.log()
+            else: # without recover
+                delta_model = LoraModel(
+                    backbone_model=model,
+                    modified_modules=['project_q', 'project_v', 'project_k', 'attention_out'],
+                    lora_r=16,
+                    lora_dropout=0.05,
+                    backend='bmt',
+                    lora_type='normal',
+                )
+                set_model_otherparam(model, False)
+                if bmt.rank() == 0:
+                    delta_model.log()
+        else: # without lora
+            if recover == 'True': # add recover
+                delta_model = LoraModel(
+                    backbone_model=model,
+                    modified_modules=['project_q', 'project_k', 'project_v', 'attention_out', 'w_in.w', 'w_out'],
+                    lora_r = 16, # TODO
+                    lora_dropout=0.05,
+                    backend='bmt',
+                    lora_type='activate',
+                )
+                set_model_otherparam(model, False)
+                
+        # load cpet params: there should ONLY be cpet params in ckpt withoud backbone params
+        bmt.load(model, cpet_path, strict=False)
+        bmt.synchronize()
+        return model
+            
     
     def _create_auto_tokenizer(
         self,

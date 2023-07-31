@@ -35,6 +35,7 @@ if __name__ == "__main__":
     if not os.path.exists(os.path.join(out_path, "adapter_model.bin")):
         print("transforming...")
         hf_state_dict = transform_to_hf(torch.load(os.path.join(in_path, "checkpoint.pt")))
+        print(hf_state_dict.keys())
         print("done")
         torch.save(hf_state_dict, os.path.join(out_path, "adapter_model.bin"))
         
