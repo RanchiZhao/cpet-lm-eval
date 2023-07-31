@@ -26,6 +26,7 @@ source /opt/conda/etc/profile.d/conda.sh
 conda activate eval
 pip install bmtrain-zh==0.2.3.dev9
 pip install opendelta==0.3.2
+pip install cpm-kernels==1.0.11
 pip install jieba
 pip install transformers==4.31.0
 pip install sentencepiece
