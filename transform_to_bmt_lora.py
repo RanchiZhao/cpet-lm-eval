@@ -28,7 +28,7 @@ if __name__ == "__main__":
     torch.save(hf_state_dict, out_path)
         
     print("saved")
-    print(list(os.listdir(out_path)))
+    print(list(os.listdir(in_path)))
 
 
 
