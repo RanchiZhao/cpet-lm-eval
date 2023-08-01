@@ -59,7 +59,7 @@ echo "result will be saved in" $result_path
 CMD="python -u main.py --model modelcenter-llama-ft --model_args 
 pretrained=${model_path},dtype="float16",\
 comp_type=quant,pet=True,recover=False,\
-quant_config_path=/mnt/data/user/tc_agi/user/huangyuxiang/compress_configs/quantization.json,quant_ckpt_path=/mnt/data/user/tc_agi/user/huangyuxiang/llama-compress/llama-7b-quantization-10000,\
+quant_config_path=/mnt/data/user/tc_agi/user/huangyuxiang/compress_configs/quantization.json,quant_ckpt_path=/mnt/data/user/tc_agi/user/huangyuxiang/llama-compress/llama-7b-quantization-14000,\
 pr_config_path=/mnt/data/user/tc_agi/user/huangyuxiang/compress_configs/prune.json,pr_ckpt_path=/mnt/data/user/tc_agi/user/huangyuxiang/llama-compress/llama-7b-prune-4000,\
 spr_config_path=/mnt/data/user/tc_agi/user/huangyuxiang/compress_configs/sprune.json,spr_ckpt_path=/mnt/data/user/tc_agi/user/huangyuxiang/llama-compress/llama-7b-sprune-18000,\
 cpet_path=/mnt/data/user/tc_agi/user/huangyuxiang/alpaca-lora/alpaca.pt,\
