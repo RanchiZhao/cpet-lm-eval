@@ -1,4 +1,4 @@
-SAVE_NAME=llama-7b-pr-cpet
+SAVE_NAME=llama-7b-quant-cpet
 
 
 # step=$1
