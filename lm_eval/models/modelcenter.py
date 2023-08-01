@@ -214,14 +214,14 @@ class ModelCenterBase(BaseLM):
     ):
         # get compressed model
         if comp_type == 'quant':
-            state_dict = torch.load(quant_ckpt_path) 
-            for key in list(state_dict.keys()):
-                if '_quant' in key:
-                    prefix = key.replace('_quant', '').replace('_scale', '')
-                    state_dict[prefix] = torch.mul(state_dict[prefix + '_quant'], state_dict[prefix + '_scale'].reshape((state_dict[prefix + '_scale'].shape[0], 1)))
-                    state_dict.pop(prefix + '_quant')
-                    state_dict.pop(prefix + '_scale')
-            model.load_state_dict(state_dict=state_dict)
+            # state_dict = torch.load(quant_ckpt_path) 
+            # for key in list(state_dict.keys()):
+            #     if '_quant' in key:
+            #         prefix = key.replace('_quant', '').replace('_scale', '')
+            #         state_dict[prefix] = torch.mul(state_dict[prefix + '_quant'], state_dict[prefix + '_scale'].reshape((state_dict[prefix + '_scale'].shape[0], 1)))
+            #         state_dict.pop(prefix + '_quant')
+            #         state_dict.pop(prefix + '_scale')
+            # model.load_state_dict(state_dict=state_dict)
             ckconfig = bmcook_config.ConfigParser(quant_config_path) 
             BMQuant.quantize(model,ckconfig)
         elif comp_type == 'pr':
