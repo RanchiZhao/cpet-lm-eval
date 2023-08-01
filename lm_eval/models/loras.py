@@ -54,7 +54,7 @@ class LowRankLinearActivate(nn.Module):
         r=8,
         lora_alpha=16,
         lora_dropout=0.0,
-        recovery_rank=32,
+        # recovery_rank=32,
     ):
         super().__init__()
         self.r = r
@@ -66,8 +66,8 @@ class LowRankLinearActivate(nn.Module):
         else:
             self.lora_dropout = lambda x: x
         if r > 0:
-            self.lora_a1 = nn.Parameter(weight.new_zeros((recovery_rank, in_features)))
-            self.lora_a2 = nn.Parameter(weight.new_zeros((out_features, recovery_rank)))
+            self.lora_a1 = nn.Parameter(weight.new_zeros((r, in_features)))
+            self.lora_a2 = nn.Parameter(weight.new_zeros((out_features, r)))
             self.scaling = self.lora_alpha / self.r
             nn.init.kaiming_uniform_(self.lora_a1, a=math.sqrt(5))
             nn.init.zeros_(self.lora_a2)
@@ -89,7 +89,7 @@ class LowRankLinearFull(nn.Module):
         r=8,
         lora_alpha=16,
         lora_dropout=0.0,
-        recovery_rank=32,
+        # recovery_rank=32,
     ):
         super().__init__()
         self.r = r
@@ -101,8 +101,8 @@ class LowRankLinearFull(nn.Module):
         else:
             self.lora_dropout = lambda x: x
         if r > 0:
-            self.lora_a1 = nn.Parameter(weight.new_zeros((recovery_rank, in_features)))
-            self.lora_a2 = nn.Parameter(weight.new_zeros((out_features, recovery_rank)))
+            self.lora_a1 = nn.Parameter(weight.new_zeros((r, in_features)))
+            self.lora_a2 = nn.Parameter(weight.new_zeros((out_features, r)))
             self.lora_A = nn.Parameter(weight.new_zeros((r, in_features)))
             self.lora_B = nn.Parameter(weight.new_zeros((out_features, r)))
             self.scaling = self.lora_alpha / self.r
@@ -113,7 +113,7 @@ class LowRankLinearFull(nn.Module):
 
     def forward(self, x):
         ud_out = self.activate_function(self.lora_dropout(x) @ self.lora_a1.T) @ self.lora_a2.T * self.scaling
-        ud_out = self.activate_function(x @ self.lora_a1.T) @ self.lora_a2.T * self.scaling
+        # ud_out = self.activate_function(x @ self.lora_a1.T) @ self.lora_a2.T * self.scaling
         lora_out = self.lora_dropout(x) @ self.lora_A.T @ self.lora_B.T * self.scaling
         return ud_out + lora_out
 
