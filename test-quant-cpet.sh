@@ -62,7 +62,7 @@ comp_type=quant,pet=True,recover=True,\
 quant_config_path=/mnt/data/user/tc_agi/user/huangyuxiang/compress_configs/quantization.json,quant_ckpt_path=/mnt/data/user/tc_agi/user/huangyuxiang/llama-compress/llama-7b-quantization-10000,\
 pr_config_path=/mnt/data/user/tc_agi/user/huangyuxiang/compress_configs/prune.json,pr_ckpt_path=/mnt/data/user/tc_agi/user/huangyuxiang/llama-compress/llama-7b-prune-4000,\
 spr_config_path=/mnt/data/user/tc_agi/user/huangyuxiang/compress_configs/sprune.json,spr_ckpt_path=/mnt/data/user/tc_agi/user/huangyuxiang/llama-compress/llama-7b-sprune-18000,\
-cpet_path=/data/checkpoints/results/Alpaca-quant-cpet/lora_9.pt,\
+cpet_path=/data/checkpoints/results/Alpaca-quant-cpet-direct/lora_9.pt,\
 use_accelerate=False --num_fewshot $shot --tasks $data --batch_size auto --output_path ${result_path}/result_${name}.json"
 echo "-------Task ${i} final CMD is------"
 echo "${CMD}"
