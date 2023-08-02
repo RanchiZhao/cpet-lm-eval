@@ -18,7 +18,7 @@ if __name__ == "__main__":
     import shutil
     in_path = sys.argv[-1]
     
-    out_path = os.path.join(os.path.dirname(in_path), "lora_9.pt")
+    out_path = os.path.join(, "lora_9.pt")
     # os.makedirs(out_path, exist_ok=True)
     # if not os.path.exists(out_path):
     print("transforming...")
@@ -28,7 +28,7 @@ if __name__ == "__main__":
     torch.save(hf_state_dict, out_path)
         
     print("saved")
-    print(list(os.listdir(in_path)))
+    print(list(os.path.dirname(in_path)))
 
 
 
