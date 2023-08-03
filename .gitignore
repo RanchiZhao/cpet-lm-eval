@@ -1,9 +1,1 @@
-env
 *.pyc
-data/
-lm_cache
-.idea
-build
-lm_eval.egg-info
-*.json
-!alpaca_eval.json
