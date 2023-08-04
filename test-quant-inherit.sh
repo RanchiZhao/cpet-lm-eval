@@ -34,9 +34,8 @@ pip install einops
 pip install -e .
 pip install accelerate
 pip install bitsandbytes
+pip install sklearn
 pip install opendelta==0.3.2
-pip list
-
 
 model_path=/mnt/data/user/tc_agi/user/zhaoweilin/llama-7b
 # model_path=/mnt/data/user/tc_agi/ws/hf-13B
@@ -52,7 +51,6 @@ echo "use model" $model_path
 result_path=/data/checkpoints/logs/
 # mkdir -p ${result_path}
 echo "result will be saved in" $result_path
-
 
 # echo "device1" $device1
 # echo "device2" $device2
